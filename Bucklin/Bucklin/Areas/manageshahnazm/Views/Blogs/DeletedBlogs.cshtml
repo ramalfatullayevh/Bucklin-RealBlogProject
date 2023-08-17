@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewData["Title"] = "DeletedBlogs";
+    Layout = "~/Areas/manageshahnazm/Views/Shared/_Layout.cshtml";
+}
+
+@model ICollection<Blog>
+<!-- Page Sidebar Ends-->
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Bootstrap Basic Tables</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item">Tables</li>
+                        <li class="breadcrumb-item">Bootstrap Tables</li>
+                        <li class="breadcrumb-item active">Basic Tables</li>
+                    </ol>
+                </div>
+                <div class="col-sm-6">
+                    <!-- Bookmark Start-->
+                    <div class="bookmark">
+                        <ul>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+                            <li>
+                                <a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                                <form class="form-inline search-form">
+                                    <div class="form-group form-control-search">
+                                        <input type="text" placeholder="Search..">
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Bookmark Ends-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Hoverable rows</h5><span>Use a class <code>table-hover</code> to enable a hover state on table rows within a <code>tbody</code>.</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Blog Şəkili</th>
+                                    <th scope="col">Blog Adı</th>
+                                    <th scope="col">Yaranma Tarixi</th>
+                                    <th scope="col">Son Dəyişdirilmə Tarixi</th>
+                                    <th scope="col">Kateqoriyalar</th>
+                                    <th scope="col">İzlənmə Sayı</th>
+                                    <th scope="col">Tənzimləmələr</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var story in Model.Where(c => c.IsDeleted == true))
+                                {
+                                    <tr>
+                                        <td><img src="~/user/assets/blogimg/@story.ImageUrl" width="100px" height="100px" /></td>
+                                        <td>@story.Name</td>
+                                        <td>@story.CreatedDate.ToString( "MM/dd/yyyy hh:mm:ss tt" )</td>
+                                        <td>@story.UpdatedDate.ToString( "MM/dd/yyyy hh:mm:ss tt" )</td>
+                                        <td>
+                                            @foreach (var category in story.BlogCategories)
+                                            {
+                                                if (category.Category.Name == null)
+                                                {
+                                                    <span> - </span>
+                                                }
+                                                else
+                                                {
+                                                    <span>@category.Category.Name</span>
+                                                }
+                                            }
+                                        </td>
+                                        <td>@story.ViewCount</td>
+                                        <td>
+                                            <a class="btn btn-secondary" asp-controller="blogs" asp-action="changedeleted" asp-route-id=@story.Id data-bs-original-title="" title=""> <span class="icon-reload"></span></a>
+                                            <a class="btn btn-danger" asp-controller="blogs" asp-action="deletecomplete" asp-route-id=@story.Id data-bs-original-title="" title=""> <span class="icon-trash"></span></a>
+
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>
+

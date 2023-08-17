@@ -1,0 +1,18 @@
+﻿@model CreateBlogReviewVM
+
+<!-- Form -->
+<div class="comment-respond" id="respond">
+	<h3 class="comment-reply-title" id="reply-title"><small> <a style="display:none;" href="#" id="cancel-comment-reply-link" rel="nofollow">Cancel reply</a> </small> </h3>
+	<form class="comment-form" id="commentform" method="post" asp-controller="blog" asp-action="submitreview">
+		<p class="comment-form-comment">
+			<label for="comment">Comment</label>
+			<textarea asp-for="ReviewContent" rows="8" placeholder="Şərh Yaz" id="comment"></textarea>
+			<input type="hidden" asp-for="BlogId" value="@ViewData["blogid"]" />
+
+		</p>
+		<p class="form-submit">
+			<input type="submit" value="Gonder" class="btn btn-success" id="submit">
+		</p>
+	</form>
+</div>
+<!-- Form END -->

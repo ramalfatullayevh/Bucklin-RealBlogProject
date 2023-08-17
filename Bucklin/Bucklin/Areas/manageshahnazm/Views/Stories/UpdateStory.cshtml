@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewData["Title"] = "UpdateStory";
+    Layout = "~/Areas/manageshahnazm/Views/Shared/_Layout.cshtml";
+}
+
+@model UpdateStoryVM
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>Base inputs</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item">Forms</li>
+                        <li class="breadcrumb-item">Form Controls</li>
+                        <li class="breadcrumb-item active">Base Inputs</li>
+                    </ol>
+                </div>
+                <div class="col-sm-6">
+                    <!-- Bookmark Start-->
+                    <div class="bookmark">
+                        <ul>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Tables"><i data-feather="inbox"></i></a></li>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Chat"><i data-feather="message-square"></i></a></li>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Icons"><i data-feather="command"></i></a></li>
+                            <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top" title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
+                            <li>
+                                <a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
+                                <form class="form-inline search-form">
+                                    <div class="form-group form-control-search">
+                                        <input type="text" placeholder="Search..">
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Bookmark Ends-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5>Hekayə Yaz</h5>
+                    </div>
+                    <form class="form theme-form" class="needs-validation" novalidate="" method="post" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="exampleFormControlInput5">Hekayənin Adı</label>
+                                        <input asp-for="Name" class="form-control btn-pill" id="validationCustom01" type="text" placeholder="Hekayənin adını daxil edin">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="exampleFormControlSelect8">Example multiple select</label>
+                                        <select asp-for="CategoryIds" asp-items="@ViewBag.Category" class="form-select btn-pill p-l-45 digits" id="exampleFormControlSelect8" multiple="">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <div>
+                                        <label class="form-label" for="exampleFormControlTextarea9">Example textarea</label>
+                                        <textarea asp-for="Content" class="form-control btn-pill summernote" id="exampleFormControlTextarea9" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:20px">
+                                <div class="col">
+                                    <div class="mb-3 row">
+                                        <div class="col-sm-12">
+                                            <img src="~/user/assets/storyimg/@Model.Coverİmage" style="width:15%">
+                                            <input asp-for="Cover" class="form-control" type="file">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <div class="checkbox checkbox-solid-success" style="margin-left:30px">
+                                        <input asp-for="IsPopular" id="solid1" type="checkbox">
+                                        <label for="solid1">Önə Çıxarılan Et</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer text-end">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <input class="btn btn-light" type="reset" value="Cancel">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>

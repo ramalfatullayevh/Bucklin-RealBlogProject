@@ -1,0 +1,125 @@
+﻿@{
+    ViewData["Title"] = "Ana Səhifə";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model HomeVM
+<!-- Content -->
+<div class="page-content bg-white">
+    <div class="banner-top-info">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-8">
+                    <div class="location">
+                        <p><i class="fa fa-map-marker"></i>Bakı, Azərbaycan</p>
+                    </div>
+                </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-4 align-self-center">
+                        <ul class="social-link list-inline m-b0">
+                        <li><a href="javascript:void(0);" class="fa fa-sign-in" style="font-size:30px"></a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- Slider Banner -->
+    <div class="banner-slide owl-carousel owl-dots">
+        <div class="item">
+            <div class="slider-bx">
+                <div class="dlab-post-media overlay-black-light">
+                    <img src="~/user/images/main-slider/slide3.jpg" alt="">
+                </div>
+                <div class="slider-info text-white">
+                    <span>Xoş Gəlmişsiniz</span>
+                    <h2>Blog Səhifəm</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trending Posts -->
+    <div class="section-full bg-white content-inner-1">
+        <div class="container-fluid">
+            <div class="section-head text-center">
+                <h4 class="title text-uppercase">Trend Hekayələr</h4>
+                <div class="title-separate"></div>
+            </div>
+            <div class="trending-post-bx owl-carousel owl-btn-center-lr">
+                @foreach (var story in Model.Stories.Where(s => s.IsPopular == true).OrderByDescending(s => s.CreatedDate).Take(10))
+                {
+                 <div class="item">
+                    <div class="trending-post text-center">
+                        <div class="trending-media">
+                            <img src="~/user/assets/storyimg/@story.Coverİmage" alt="story" />
+                        </div>
+                        <div class="trending-info">
+                            <h3 class="trending-title"><a asp-action="storydetail" asp-controller="story" asp-route-id="@story.Id" >@story.Name
+                                        </a></h3>
+                            <div class="post-date">
+                                    @story.CreatedDate.ToString( "dd" ) <span>@story.CreatedDate.ToString( "MM" ) </span> @story.CreatedDate.ToString( "yyyy" ) -  @foreach (var category in story.StoryCategories){
+                                        @category.Category.Name
+                                    }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- Trending Posts End -->
+    <!-- Blog Post -->
+    <div class="section-full bg-white content-inner-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-7 col-sm-12 col-12">
+                    <div class="row loadmore-content">
+                        @foreach (var blog in Model.Blogs.Where(s => s.IsPopular == true).OrderByDescending(s => s.CreatedDate).Take(6))
+                        {
+                          <div class="col-lg-6 m-b30">
+                            <div class="blog-card blog-grid bg-dark">
+                                <div class="blog-card-media">
+                                        <img src="~/user/assets/blogimg/@blog.ImageUrl" style="width:392px;height:354px" alt="blog" />
+                                </div>
+                                <div class="blog-card-info text-center">
+                                    <h2 class="title"><a asp-action="blogdetail" asp-controller="blog" asp-route-id="@blog.Id">@blog.Name</a></h2>
+                                    <div class="post-date">
+                                            @blog.CreatedDate.ToString( "dd" ) <span>@blog.CreatedDate.ToString( "MM" ) </span> @blog.CreatedDate.ToString( "yyyy" )
+                                    </div>
+                                    <ul class="add-info">
+                                        <li><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>@blog.ViewCount</span></a></li>
+                                        <li><a asp-action="blogdetail" asp-controller="blog" asp-route-id="@blog.Id" class="btn outline radius-no white">Ətraflı Bax</a></li>
+                                        <li><a href="javascript:void(0);"><i class="la la-comment"></i><span>@blog.BlogComments.Count</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-12 col-12">
+                    <div class="side-bar p-l20 m-b30 sticky-top">
+                        <div class="widget widget_categories">
+                            <h6 class="widget-title">Kateqoriyalar</h6>
+                            <ul>
+                                @foreach (var category in Model.Categories)
+                                {
+                                    <li><a href="javascript:void(0);">@category.Name</a>
+                                        (@category.BlogCategories.Count)
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="widget widget_mailbox">
+                            <div class="mailbox" style="background-image: url(images/background/img3.jpg); background-size: cover; background-position: center;">
+                                <a href="javascript:void(0);" class="btn radius-no btn-block primary">bucklinblog.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Us End -->
+</div>
+<!-- Content END-->

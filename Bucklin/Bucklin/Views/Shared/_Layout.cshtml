@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+	<meta name="description" content="Bucklin : Blog HTML Template" />
+	<meta property="og:title" content="Bucklin : Blog HTML Template" />
+	<meta property="og:description" content="Bucklin : Blog HTML Template" />
+	<meta property="og:image" content="" />
+	<meta name="format-detection" content="telephone=no">
+
+	<!-- FAVICONS ICON -->
+	<link rel="icon" href="~/user/images/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="~/user/images/favicon.png" />
+
+	<!-- PAGE TITLE HERE -->
+	<title>@ViewData["Title"] - Bucklin</title>
+
+	<!-- MOBILE SPECIFIC -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--[if lt IE 9]>
+	<script src="~/user/js/html5shiv.min.js"></script>
+	<script src="~/user/js/respond.min.js"></script>
+	<![endif]-->
+	<!-- STYLESHEETS -->
+	<link rel="stylesheet" type="text/css" href="~/user/css/plugins.css">
+	<link rel="stylesheet" type="text/css" href="~/user/css/style.css">
+	<link rel="stylesheet" type="text/css" href="~/user/css/templete.css">
+	<link class="skin" rel="stylesheet" type="text/css" href="~/user/css/skin/skin-1.css">
+
+</head>
+<body id="bg">
+	<div class="page-wraper">
+		<div id="loading-area"></div>
+			<!-- Header Section -->
+			<header class="site-header mo-left header-full header header-transparent header-bottom">
+				<!-- Main Header -->
+				<div class="sticky-header main-bar-wraper navbar-expand-lg">
+					<div class="main-bar clearfix ">
+						<div class="container-fluid">
+							<div class="header-content-bx">
+								<!-- website logo -->
+								<div class="logo-header">
+									<a href="~/user/index.html"><img src="~/user/images/logo.png" alt="" /></a>
+								</div>
+								<!-- Extra Nav -->
+								<div class="extra-nav">
+									<div class="extra-cell">
+										<ul>
+											<li class="search-btn">
+												<a href="javascript:;" class="btn-link menu-icon">
+													<div class="menu-icon-in">
+														<span></span>
+														<span></span>
+														<span></span>
+														<span></span>
+													</div>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<!-- Main Nav -->
+								<div class="header-nav navbar-collapse collapse justify-content-center" id="navbarNavDropdown">
+									<ul class="nav navbar-nav">
+									<li><a asp-action="index" asp-controller="home">Ana Səhifə</a></li>
+									<li><a asp-action="index" asp-controller="about">Haqqımda</a></li>
+										<li><a asp-controller="blog" asp-action="index">Bloqlar</a></li>
+										<li><a href="contact.html">Hekayələr</a></li>
+										<li><a href="contact.html">Əlaqə</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Main Header END -->
+				<!-- Header Left -->
+				<div class="header-nav navbar-collapse collapse full-sidenav content-scroll">
+					<div class="location">
+						<p><i class="fa fa-map-marker"></i>Bakı,Azərbaycan</p>
+					</div>
+					<ul class="nav navbar-nav">
+					<li><a asp-action="index" asp-controller="home">Ana Səhifə</a></li>
+					<li><a href="contact.html">Haqqımda</a></li>
+					<li><a href="contact.html">Bloqlar</a></li>
+					<li><a href="contact.html">Hekayələr</a></li>
+					<li><a href="contact.html">Əlaqə</a></li>
+					</ul>
+					<div class="logo-header">
+						<a href="index.html"><img src="~/user/images/logo.png" alt="" /></a>
+					</div>
+				</div>
+				<div class="menu-close">
+					<i class="la la-close"></i>
+				</div>
+				<!-- Header Left End -->
+			</header>
+			<!-- header END -->
+            @RenderBody()
+		<!-- Newslatter -->
+		<div class="newslatter-bx">
+			<div class="container">
+				<form action="script/mailchamp.php" method="post" class="row m-lr0 align-items-center dezPlaceAni dzSubscribe">
+					<div class="col-xl-6 col-lg-6 col-md-12">
+						<div class="title-bx">
+							<h2 class="m-b0">Join Our Newslatter!</h2>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-12 contact-form-bx">
+						<div class="form-group">
+							<div class="input-group">
+								<label>Your Email Address</label>
+								<input name="dzEmail" required="required" type="email" class="form-control" placeholder="">
+								<button name="submit" value="Submit" type="submit" class="btn-link">Subscribe</button>
+							</div>
+							<div class="dzSubscribeMsg"></div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- Newslatter End -->
+		<!-- Social Link Box -->
+		<div class="section-full social-link-bx">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2 col-md-4 col-sm-4 col-6">
+						<a href="javascript:void(0);" class="social-link">
+							<i class="fa fa-twitter"></i>
+							<span>twitter</span>
+						</a>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-4 col-6">
+						<a href="javascript:void(0);" class="social-link">
+							<i class="fa fa-facebook"></i>
+							<span>Facebook</span>
+						</a>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-4 col-6">
+						<a href="javascript:void(0);" class="social-link">
+							<i class="fa fa-instagram"></i>
+							<span>Instagram</span>
+						</a>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-4 col-6">
+						<a href="javascript:void(0);" class="social-link">
+							<i class="fa fa-behance"></i>
+							<span>Behance</span>
+						</a>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-4 col-6">
+						<a href="javascript:void(0);" class="social-link">
+							<i class="fa fa-youtube-play"></i>
+							<span>Youtube</span>
+						</a>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-4 col-6">
+						<a href="javascript:void(0);" class="social-link">
+							<i class="fa fa-pinterest-p"></i>
+							<span>Pinterest</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Social Link Box End -->
+		<!-- Footer -->
+		<footer class="site-footer">
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-4">
+							<ul class="footer-link m-b0">
+								<li><a href="~/user/index.html">Home</a></li>
+								<li><a href="~/user/about-us.html">About</a></li>
+								<li><a href="~/user/contact.html">Contact</a></li>
+							</ul>
+						</div>
+						<div class="col-lg-4">
+							<div class="footer-logo">
+								<a href="~/user/index.html"><img src="~/user/images/logo.png" alt="" /></a>
+							</div>
+						</div>
+						<div class="col-lg-4">
+							<p class="copyright">Copyright © 2020 DexignZone.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- Footer END-->
+		<button class="scroltop fa fa-chevron-up"></button>
+	</div>
+	<!-- JAVASCRIPT FILES ========================================= -->
+	<script src="~/user/js/jquery.min.js"></script><!-- JQUERY.MIN JS -->
+	<script src="~/user/plugins/bootstrap/js/popper.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+	<script src="~/user/plugins/bootstrap/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+	<script src="~/user/plugins/bootstrap-select/bootstrap-select.min.js"></script><!-- FORM JS -->
+	<script src="~/user/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script><!-- FORM JS -->
+	<script src="~/user/plugins/magnific-popup/magnific-popup.js"></script><!-- MAGNIFIC POPUP JS -->
+	<script src="~/user/plugins/counter/waypoints-min.js"></script><!-- WAYPOINTS JS -->
+	<script src="~/user/plugins/counter/counterup.min.js"></script><!-- COUNTERUP JS -->
+	<script src="~/user/plugins/imagesloaded/imagesloaded.js"></script><!-- IMAGESLOADED -->
+	<script src="~/user/plugins/masonry/masonry-3.1.4.js"></script><!-- MASONRY -->
+	<script src="~/user/plugins/masonry/masonry.filter.js"></script><!-- MASONRY -->
+	<script src="~/user/plugins/owl-carousel/owl.carousel.js"></script><!-- OWL SLIDER -->
+	<script src="~/user/plugins/scroll/scrollbar.min.js"></script><!-- Scroll Bar -->
+	<script src="~/user/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
+	<script src="~/user/js/dz.carousel.js"></script><!-- SORTCODE FUCTIONS -->
+	<script src="~/user/js/dz.ajax.js"></script><!-- CONTACT JS  -->
+</body>
+</html>

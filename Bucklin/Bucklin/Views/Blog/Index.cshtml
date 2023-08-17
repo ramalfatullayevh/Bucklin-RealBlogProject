@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model ICollection<Blog>
+<!-- Content -->
+    <div class="page-content bg-white">
+		<!-- Blog Post -->
+		<div class="section-full bg-white content-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-md-7 col-sm-12 col-12">
+						<div class="row loadmore-content">
+							@foreach (var blog in Model)
+						{
+							<div class="col-lg-6 m-b30">
+								<div class="blog-card blog-grid">
+									<div class="blog-card-media">
+										<img src="~/user/assets/blogimg/@blog.ImageUrl" width="392px" height="450px" alt=""/>
+									</div>
+									<div class="blog-card-info text-center">
+										<div class="post-tag"><a href="post-standart.html">
+											@foreach (var category in blog.BlogCategories)
+												{
+													<span>@category.Category.Name</span>
+												}
+										</a></div>
+										<h2 class="title"><a href="post-standart.html">@blog.Name</a></h2>
+										<div class="post-date">
+											@blog.CreatedDate.ToString( "dd" ) <span>@blog.CreatedDate.ToString( "MM" ) </span> @blog.CreatedDate.ToString( "yyyy" )
+										</div>
+										<ul class="add-info">
+											<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>@blog.ViewCount</span></a></li>
+											<li><a href="javascript:void(0);"><i class="la la-comment"></i><span>@blog.BlogComments.Count</span></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						}
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-5 col-sm-12 col-12">
+						<div class="side-bar p-l20 m-b30 sticky-top">
+							<div class="widget recent-posts-entry">
+								<h5 class="widget-title">Trend Bloqlar</h5>
+								<div class="widget-post-bx">
+									@foreach (var blog in Model.OrderByDescending(b=>b.ViewCount))
+								{
+									
+									<div class="widget-post clearfix">
+										<div class="dlab-post-media">
+											<img src="~/user/assets/blogimg/@blog.ImageUrl" alt="" width="200" height="143">
+										</div>
+										<div class="dlab-post-info">
+											<div class="dlab-post-header">
+												<h6 class="post-title"><a href="post-standart.html">@blog.Name</a></h6>
+												<div class="post-date">
+											@blog.CreatedDate.ToString( "dd" ) <span>@blog.CreatedDate.ToString( "MM" ) </span> @blog.CreatedDate.ToString( "yyyy" )
+												</div>
+											</div>
+										</div>
+									</div>
+								}
+								</div>
+							</div>
+							<div class="widget widget_categories">
+								<h6 class="widget-title">Kateqoriyalar</h6>
+								<ul>
+									@foreach (var blog in Model)
+								{
+									@foreach (var category in blog.BlogCategories)
+									{
+										<li><a href="javascript:void(0);">@category.Category.Name </a> @blog.BlogCategories.Count </li>
+										
+									}
+								}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Blog Post End -->
+    </div>
+    <!-- Content END-->

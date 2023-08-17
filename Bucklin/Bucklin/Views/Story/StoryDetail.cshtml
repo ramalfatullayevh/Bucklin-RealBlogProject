@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewData["Title"] = "StoryDetail";
+	    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@model StoryVM
+    <!-- Content -->
+    <div class="page-content bg-white">
+		<!-- About Us -->
+		<div class="section-full bg-white">
+			<div class="blog-card blog-grid blog-full overlap overlay-gradient">
+				<div class="blog-card-media">
+					<img src="~/user/assets/storyimg/@Model.Story.Coverİmage" style="width:1920px; height:680px" alt=""/>
+				</div>
+				<div class="blog-card-info text-center">
+					<div class="post-date">
+					@Model.Story.CreatedDate.ToString( "dd" ) <span>@Model.Story.CreatedDate.ToString( "MM" ) </span> @Model.Story.CreatedDate.ToString( "yyyy" )
+					</div>
+				<h2 class="title"><a href="post-standart.html" class="text-white">@Model.Story.Name</a></h2>
+				</div>
+			</div>
+		</div>
+		<div class="section-full content-inner bg-white">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-md-7 col-sm-12 col-12">
+						<div class="blog-post blog-single blog-post-style-2 sidebar">
+							<div class="dlab-post-info">
+								<div class="dlab-post-text text mt-0">
+								<p>@Model.Story.Content</p>
+									<div class="row post-footer m-lr0">
+										<div class="col-lg-4 p-lr0 m-b30">												 
+											<span class="m-r5">Yazar : </span> <a href="javascript:void(0);" class="text-uppercase">Şahnaz Məmmədova</a> 
+										</div>
+										<div class="col-lg-4 p-lr0 m-b30 text-center">
+											<ul class="add-info">
+											<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><span>@Model.Story.ViewCount</span></a></li>
+											<li><a href="javascript:void(0);"><i class="la la-comment"></i><span>@Model.Story.StoryComments.Count</span></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="min-container">
+							<div class="clear m-b30" id="comment-list">
+								<div class="comments-area" id="comments">
+									<div class="row m-b30">
+										<div class="col-lg-3">
+											<div class="sticky-top">
+												<h6 class="title-style1 text-uppercase">Şərhlər</h6>
+											</div>
+										</div>
+										<div class="col-lg-9">
+											<!-- comment list END -->
+											<ol class="comment-list">
+											@foreach (var comments in Model.Story.StoryComments)
+											{
+												
+												<li class="comment">
+													<div class="comment-body">
+														<div class="comment-content">
+															<p>@comments.ReviewContent</p>
+														</div>
+														<div class="comment-author vcard"> 
+															<span >@comments.AppUser.UserName</span> <span class="says">şərh:</span> 
+														</div>
+														<div class="comment-meta">
+															@comments.ReviewDate.ToString( "dd" ) <span>@comments.ReviewDate.ToString( "MM" ) </span>@comments.ReviewDate.ToString( "yyyy" )
+														</div>
+													</div>
+												</li>
+											}
+											</ol>
+											<!-- comment list END -->
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-3">
+											<div class="sticky-top">
+												<h6 class="title-style1 text-uppercase">Şərh Yaz</h6>
+											</div>
+										</div>
+										<div class="col-lg-9">
+											@{
+												CreateStoryReviewVM reviewVM = new CreateStoryReviewVM();
+												reviewVM.ReviewContent = "";
+												reviewVM.StoryId = Model.Story.Id;
+												reviewVM.Story = Model.Story;
+											}
+											 
+												@await Html.PartialAsync("_SubmitReviewPartial", reviewVM, new ViewDataDictionary(ViewData){{"storyid" , Model.Story.Id}})
+											 
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-5 col-sm-12 col-12">
+						<div class="side-bar p-l20 m-b30 sticky-top">
+							<div class="widget recent-posts-entry">
+								<h5 class="widget-title">Trend Hekayələr</h5>
+								@foreach (var stories in Model.Stories.OrderByDescending(s=>s.ViewCount).Take(5))
+								{
+									<div class="widget-post-bx">
+										<div class="widget-post clearfix">
+											<div class="dlab-post-media">
+												<img src="~/user/assets/storyimg/@stories.Coverİmage" alt="" width="200" height="143">
+											</div>
+											<div class="dlab-post-info">
+												<div class="dlab-post-header">
+													<h6 class="post-title"><a asp-controller="story" asp-action="storydetail" asp-route-id="@stories.Id">@stories.Name</a></h6>
+													<div class="post-date">
+													@stories.CreatedDate.ToString( "dd" ) <span>@stories.CreatedDate.ToString( "MM" ) </span> @stories.CreatedDate.ToString( "yyyy" )
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								}
+							</div>
+							<div class="widget widget_categories">
+								<h6 class="widget-title">Kateqoriyalar</h6>
+								<ul>
+									@foreach (var category in Model.Story.StoryCategories)
+									{
+
+										<li><a href="javascript:void(0);">@category.Category.Name </a> (@Model.Story.StoryCategories.Count) </li>
+								}
+								</ul>
+							</div>
+							<div class="widget widget_mailbox">
+								<div class="mailbox" style="background-image: url(images/background/img3.jpg); background-size: cover; background-position: center;">
+									<a  asp-controller="home" class="btn radius-no btn-block primary">Ana Səhifə</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- About Us End -->
+    </div>
+    <!-- Content END-->
